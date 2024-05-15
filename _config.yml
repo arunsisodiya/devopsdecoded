@@ -27,6 +27,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   🔥 Dive into a world where DevOps meets programming mastery. Whether you are a coding enthusiast, a seasoned developer, or a DevOps aficionado, you will find a treasure trove of insights here.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://devopsdecoded.vercel.app/" # the base hostname & protocol for your site, e.g. http://example.com
+categories_folder: category
+language: "en"
 show_hero: true
 tags:
   - blog
@@ -41,8 +43,6 @@ menu:
     url: /about
   - title: Contact
     url: /contact
-  - title: Blog
-    url: /blog
 
 # Social Media Settings
 twitter_username: devopsdecoded
@@ -51,7 +51,7 @@ linkedin_username: arunsinghsisodiya
 medium_username: devopsdecoded
 
 # Posts Settings
-show_time_bar: false
+show_time_bar: true
 show_modal_on_exit: true
 show_modal_on_finish_post: true
 two_columns_layout: true
@@ -92,7 +92,7 @@ collections:
   authors:
     output: true
 paginate_path: "/page/:num/"
-show_get_theme_btn: true
+show_get_theme_btn: false
 use_logo: false
 
 
