@@ -8,4 +8,11 @@ $lightGray: #f2f2f2;
 $texts: #333333;
 
 
+.bar-header .logo a {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+    font-family: 'Poppins';
+}
+
+
 @import "jekflix";

@@ -5,6 +5,7 @@ image: >-
      ../assets/images/posts/01-kubernetes-security.webp
 date:   2024-05-15 16:16:47 +0200
 categories: kubernetes security best-practices cloud devops
+author: arunsisodiya
 ---
 
 🚀 Kubernetes has quickly become one of the most popular container orchestration tools used in cloud-native applications. However, with great power comes great responsibility, and it’s crucial to ensure that your Kubernetes deployments are secure. In this blog post, we’ll explore some Kubernetes security best practices that you can implement to secure your LinkedIn application deployments.

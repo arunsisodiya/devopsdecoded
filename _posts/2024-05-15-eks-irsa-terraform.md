@@ -5,6 +5,7 @@ image: >-
      ../assets/images/posts/02-eks-irsa-terraform.webp
 date:   2024-05-15 18:11:47 +0200
 categories: kubernetes security best-practices cloud devops
+author: arunsisodiya
 ---
 
 This article contains the overview and the use case of IRSA (IAM role for Service Account) that can be used to used for securing the Kubernetes cluster. This article will also provide the examples of implementing IRSA using terraform.
