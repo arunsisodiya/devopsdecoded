@@ -44,6 +44,10 @@ menu:
   - title: Contact
     url: /contact
 
+# Contact Form Setting
+# See: https://formspree.io/
+formspree_form_id: mwkgzylv
+
 # Social Media Settings
 twitter_username: devopsdecoded
 github_username:  arunsisodiya
