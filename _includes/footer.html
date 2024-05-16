@@ -33,6 +33,10 @@
     </p>
 
     {% include links.html %}
+
+    <p>
+      <span>Copyright©️</span> 2024 <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="https://devopsdecoded.vercel.app/" target="_blank" class="creator">DevOps Decoded</a>
+    </p>
 </footer>
 
 {% assign social_urls = '' %}
@@ -54,6 +58,7 @@
 {% if site.linkedin_username %}
     {% assign social_urls = social_urls | append: '"https://www.linkedin.com/in/' | append: site.linkedin_username | append: '",' %}
 {% endif %}
+
 
 <script type="application/ld+json">
 {
