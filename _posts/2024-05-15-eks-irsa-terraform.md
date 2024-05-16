@@ -2,9 +2,15 @@
 layout: post
 title: "Is Your Kubernetes Secure Enough? Explore EKS IRSA & Terraform"
 image: >-
-     ../assets/images/posts/02-eks-irsa-terraform.webp
+     ../assets/img/posts/02-eks-irsa-terraform.webp
 date:   2024-05-15 18:11:47 +0200
-categories: kubernetes security best-practices cloud devops
+category: tutorial eks security
+tags:
+  - tutorial
+  - eks
+  - security
+  - terraform
+  - irsa
 author: arunsisodiya
 ---
 

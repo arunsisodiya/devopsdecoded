@@ -2,9 +2,15 @@
 layout: post
 title: "Mastering AWS Instance Class Selection: A Practical Guide"
 image: >-
-     ../assets/images/posts/03-aws-instances.webp
+     ../assets/img/posts/03-aws-instances.webp
 date:   2023-09-20 18:11:47 +0200
-categories: best-practices
+category: best-practices
+tags:
+  - aws
+  - cloud
+  - instance-class
+  - best-practices
+  - devops
 author: arunsisodiya
 ---
 
@@ -22,7 +28,7 @@ AWS boasts an extensive array of instance classes, each tailored to specific wor
 
 Let’s kick things off with a comparison of AWS instance classes and the pivotal moments when a switch is in order:
 
-![AWS Instances Use Cases](../assets/images/posts/03-aws-instances-compare.webp)
+![AWS Instances Use Cases](.../assets/img/posts/03-aws-instances-compare.webp)
 
 ---
 
@@ -30,12 +36,12 @@ Let’s kick things off with a comparison of AWS instance classes and the pivota
 
 ### The Gaming Platform
 
-Imagine running an online gaming platform. Initially, you might use general-purpose instances from the **t2 class** to keep costs low during the early stages. 
+Imagine running an online gaming platform. Initially, you might use general-purpose instances from the **t2 class** to keep costs low during the early stages.
 > But as your player base grows, and the demand for real-time multiplayer gaming intensifies, switching to compute-optimized instances like the c5 class becomes vital for providing a seamless gaming experience.
 
 ### The E-commerce Engine
 
-For an e-commerce platform, you might start with memory-optimized instances from the **r5 class** to handle typical shopping traffic. 
+For an e-commerce platform, you might start with memory-optimized instances from the **r5 class** to handle typical shopping traffic.
 > However, during peak shopping seasons, like Black Friday, consider a strategic switch to more robust instances such as the m5 class to accommodate the surge in users and transactions without compromising performance.
 
 ---

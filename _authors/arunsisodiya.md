@@ -1,6 +1,6 @@
 ---
 layout: author
-photo: /assets/images/profile.png
+photo: /assets/img/profile.png
 name: arunsisodiya
 display_name: Mr. Sisodiya
 position: Lead CloudOps Engineer

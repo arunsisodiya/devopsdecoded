@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![avatar](../assets/images/profile.png)
+![avatar](../assets/img/profile.png)
 <h1 style="text-align: center; margin-top: -40px;"><span style="color: #ff0a16; font-weight: 700;">Arun Singh </span>Sisodiya</h1>
 
 <p style="text-align: left">
