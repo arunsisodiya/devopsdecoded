@@ -4,7 +4,7 @@ title: "Ultimate Guide: Safeguard Your Kubernetes Cluster Now!"
 image: >-
      ../assets/img/posts/01-kubernetes-security.webp
 date:   2024-05-15 16:16:47 +0200
-category: kubernetes security best-practices cloud devops
+category: security
 tags:
   - kubernetes
   - security

@@ -4,7 +4,7 @@ title: "Mastering Terraform Functions: A Guide with Examples"
 image: >-
      ../assets/img/posts/04-terraform-functions.webp
 date:   2024-05-16 10:53:47 +0200
-category: tutorial infrastructure terraform
+category: tutorial
 tags:
     - tutorial
     - terraform
