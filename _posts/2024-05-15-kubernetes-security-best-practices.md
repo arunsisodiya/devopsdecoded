@@ -117,7 +117,7 @@ When deploying containers in your Kubernetes cluster, it’s essential to ensure
 Here’s an example of using the trivy tool to scan a container image:
 
 ```bash
-$ trivy image alpine:3.14
+trivy image alpine:3.14
 ```
 
 This command scans the alpine:3.14 image for known vulnerabilities and reports any findings. You can integrate this command into your CI/CD pipeline to ensure that container images used in your Kubernetes deployment are free of vulnerabilities.
