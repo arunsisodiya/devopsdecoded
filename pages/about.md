@@ -1,10 +1,12 @@
 ---
 layout: page
+menu: false
 title: About
+description: An overview about who am I?
 permalink: /about/
 ---
 
-![avatar](../assets/img/profile.png)
+<img class="img-rounded" src="/assets/img/profile.png" alt="Arun Singh Sisodiya" width="250">
 <h1 style="text-align: center; margin-top: -40px;"><span style="color: #ff0a16; font-weight: 700;">Arun Singh </span>Sisodiya</h1>
 
 <p style="text-align: left">
