@@ -13,15 +13,15 @@ const ProfileCardInfo = () => {
           <Briefcase size={20} strokeWidth={1} />
           <p className="px-2">
             ClodOps Engineer @{' '}
-            <a className="hover:underline" target="_blank" href="https://younetmedia.com/" rel="noreferrer">
-              YouNet Media
+            <a className="hover:underline" target="_blank" href="https://www.mercedes-benz.io/" rel="noreferrer">
+              Mercedes-Benz.io
             </a>
           </p>
         </div>
         <div className="flex items-center">
           <MapPin name="map-pin" size={20} strokeWidth={1} />
           <p className="px-2">
-            Binh Thanh - Ho Chi Minh, <Twemoji emoji="viet-nam-vietnam-flag" />
+            Stuttgart - Germany, <Twemoji emoji="twa-flag-germany" />
           </p>
         </div>
         <div className="flex items-center">
