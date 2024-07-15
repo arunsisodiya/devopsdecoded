@@ -51,7 +51,7 @@ const Avatar = () => {
   return (
     <div
       className="z-10 scale-100 transition-all duration-200 ease-out hover:z-50 hover:scale-[1.02]"
-      style={{ perspective: '800px' }}
+      style={{ perspective: '800px', marginRight: '2%' }}
       ref={ref}
     >
       <div style={style} className="max-h-[430px] overflow-hidden rounded-md transition-all duration-200 ease-out">
