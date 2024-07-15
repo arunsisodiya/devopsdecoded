@@ -18,6 +18,7 @@ import siteMetadata from '@/data/siteMetadata';
 import { SearchProvider } from 'pliny/search';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // suppress useLayoutEffect warnings when running outside a browser
 if (!process.browser) React.useLayoutEffect = React.useEffect;
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <SearchProvider searchConfig={siteMetadata.search}>
           <Component {...pageProps} />
           <Analytics />
+          <SpeedInsights />
         </SearchProvider>
       </LayoutWrapper>
     </ThemeProvider>
