@@ -20,7 +20,7 @@ const Header = () => {
           <div className="animate-wave">
             <Logo className="fill-dark dark:fill-white" style={{ marginBottom: '35%' }} />
           </div>
-          <div className="group ml-2 text-3xl font-bold transition duration-300">
+          <div className="group ml-2 text-2xl font-bold transition duration-300">
             Devops.Decoded
             <span className="block h-0.5 max-w-0 bg-black transition-all duration-500 group-hover:max-w-[85%] dark:bg-white"></span>
           </div>
