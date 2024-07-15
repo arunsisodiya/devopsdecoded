@@ -112,7 +112,7 @@ module.exports = {
               backgroundColor: '#24283b',
             },
             code: {
-              color: '#BB9AF7',
+              color: '#0EA5E9',
               backgroundColor: '#24283b',
               paddingLeft: '4px',
               paddingRight: '4px',
