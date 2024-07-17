@@ -39,10 +39,10 @@ const popularTags: PopularTag[] = [
     title: 'Security',
   },
   {
-    href: '/tags/architecture',
+    href: '/tags/finops',
     iconType: 'React',
-    slug: 'architecture',
-    title: 'Architecture',
+    slug: 'finops',
+    title: 'Finops',
   },
 ];
 
