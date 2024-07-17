@@ -26,7 +26,6 @@ export interface ProjectCardProps {
 export type ReadingTime = ReturnType<typeof readingTime>;
 
 export interface BlogMetaProps {
-  date: string;
   slug: string;
   readingTime: ReadingTime;
 }
