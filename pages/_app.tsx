@@ -30,6 +30,12 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Script async data-website-id={siteMetadata.analytics.umamiWebsiteId} src="https://eu.umami.is/script.js" />
       {/* <Analytics analyticsConfig={siteMetadata.analytics} /> */}
+      <Script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      ></Script>
       <LayoutWrapper>
         <SearchProvider searchConfig={siteMetadata.search}>
           <Component {...pageProps} />

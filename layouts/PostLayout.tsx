@@ -11,6 +11,7 @@ import Tag from '@/components/Tag';
 import siteMetadata from '@/data/siteMetadata';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import BlogMeta from '@/components/blog/BlogMeta';
+import AdBanner from '@/components/AdsBanner';
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/master/data/${path}`;
 const discussUrl = (path) =>
@@ -165,6 +166,12 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           </div>
         </div>
       </article>
+      <AdBanner
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-slot="1234567890"
+        data-full-width-responsive="true"
+      />
     </SectionContainer>
   );
 }
