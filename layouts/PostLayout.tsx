@@ -169,7 +169,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
       <AdBanner
         data-ad-layout="in-article"
         data-ad-format="fluid"
-        data-ad-slot="1234567890"
+        data-ad-slot="4598103712"
         data-full-width-responsive="true"
       />
     </SectionContainer>
