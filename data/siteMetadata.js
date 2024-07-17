@@ -26,8 +26,9 @@ const siteMetadata = {
     linkedin: 'arunsinghsisodiya',
     facebook: 'devopsdecoded',
   },
+  analyticsURL: 'https://eu.umami.is/share/SzxqLWSihM2QHk3h/www.devopsdecoded.cloud',
   analytics: {
-    umamiWebsiteId: '7b7953a7-de2e-4e30-9a29-1a4aee05c627',
+    umamiWebsiteId: '2cd93df7-05f0-4d60-b772-77f1221eab1f',
   },
   newsletter: {
     provider: 'buttondown',
