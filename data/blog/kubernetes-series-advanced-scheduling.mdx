@@ -1,0 +1,228 @@
+---
+title: 'In-depth Kubernetes: Advanced Scheduling Techniques in Kubernetes'
+date: '2024-07-19'
+lastmod: '2024-07-19'
+tags: ['devops', 'architecture', 'kubernetes', 'tutorial', 'cloud', 'scheduling']
+summary: 'Mastering Advanced Kubernetes Scheduling: Node Affinity, Anti-Affinity, Taints, Custom Schedulers, and Resource Optimization'
+layout: PostLayout
+---
+
+![thumbnail](/static/images/blogs/posts/08-kubernetes-scheduling-techniques.png)
+
+Kubernetes is powerful, but its default scheduling doesn't always meet complex needs. For optimal performance and reliability, you need to master advanced scheduling techniques.
+
+## Problem Statement
+
+_**The default scheduler isn't enough for complex scenarios.**_
+
+Learn advanced techniques like node affinity, anti-affinity, taints, custom schedulers, and resource requests to fine-tune your deployments.
+
+#### Table of Contents
+
+- [Node Affinity and Anti-Affinity](#1-node-affinity-and-anti-affinity)
+- [Taints and Tolerations](#2-taints-and-tolerations)
+- [Custom Schedulers](#3-custom-schedulers)
+- [Scheduling Based on Resource Usage](#4-scheduling-based-on-resource-usage)
+- [Comparison of Advanced Scheduling Techniques in Kubernetes](#comparison-of-advanced-scheduling-techniques-in-kubernetes)
+- [Conclusion](#conclusion)
+
+## 1. Node Affinity and Anti-Affinity
+
+    ### **Node Affinity**
+
+    This mechanism lets you express preferences or hard requirements for which nodes your pods can be scheduled on. You can target nodes based on labels, their existence within a topology domain (like a zone or region), or even custom expressions.
+
+    ![Node Affinity](/static/images/blogs/posts/kubernetes-scheduling/node-affinity.png)
+
+    **Example:**
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: affinity-example
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: disktype
+                operator: In
+                values:
+                - ssd
+      containers:
+      - name: nginx
+        image: nginx
+    ```
+
+    **Explanation:**
+
+    This pod will only be scheduled on nodes with the label `disktype=ssd`.
+
+    ### **Node Anti-Affinity**
+
+    The opposite of affinity, anti-affinity lets you prevent pods from being scheduled on the same node or even in the same topology domain. This is useful for ensuring high availability or for isolating specific workloads.
+
+    ![Pod Anti Affinity](/static/images/blogs/posts/kubernetes-scheduling/pod-anit-affinity.png)
+
+    **Example:**
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: anti-affinity-example
+    spec:
+      replicas: 3
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+          labels:
+            app: nginx
+        spec:
+          affinity:
+            podAntiAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                    - nginx
+                topologyKey: "kubernetes.io/hostname"
+          containers:
+          - name: nginx
+            image: nginx
+    ```
+
+    **Explanation:**
+
+    This deployment ensures that the nginx pods are scheduled on different nodes.
+
+---
+
+## 2. Taints and Tolerations
+
+**Taints and Tolerations** provide a mechanism to repel pods from certain nodes unless they tolerate the taints.
+Taints are applied to nodes, and tolerations are applied to pods.
+
+- **Taints:** Think of taints as labels you put on a node, marking it as unsuitable for certain pods. Common taints might indicate a node is dedicated to a specific type of workload, is running on specialized hardware, or is undergoing maintenance.
+- **Tolerations:** These are the counterpart to taints. You apply tolerations to a pod's specification, indicating that it's okay for the pod to run on a node with a specific taint.
+
+![Taint & Toleration](/static/images/blogs/posts/kubernetes-scheduling/taint-toleration.png)
+
+**Example:**
+
+1. Add a Taint to a Node:
+   ```bash
+   # Taint the node
+   kubectl taint nodes node1 key=value:NoSchedule
+   ```
+2. Add a Toleration to a Pod:
+   `yaml
+    # Pod specification with toleration
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: toleration-example
+    spec:
+      tolerations:
+      - key: "key"
+        operator: "Equal"
+        value: "value"
+        effect: "NoSchedule"
+      containers:
+      - name: nginx
+        image: nginx
+    `
+   **Explanation:**
+
+The pod will only be scheduled on nodes with the taint `key=value:NoSchedule`.
+
+---
+
+## 3. Custom Schedulers
+
+Kubernetes allows you to create custom schedulers to implement your own scheduling logic.
+Custom schedulers can be used to implement specific scheduling algorithms tailored to your needs.
+
+![Custom Scheduler](/static/images/blogs/posts/kubernetes-scheduling/custom-scheduler.png)
+
+**Example:**
+
+1. Create a Custom Scheduler:
+
+   **_Create a custom scheduler container image implementing your scheduling logic._**
+
+2. Specify the Custom Scheduler in a Pod:
+   `yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: custom-scheduler-example
+    spec:
+      schedulerName: my-custom-scheduler # Your custom scheduler
+      containers:
+      - name: nginx
+        image: nginx
+    `
+   **Explanation:**
+
+This pod will be scheduled by the custom scheduler named `my-custom-scheduler`.
+
+---
+
+## 4. Scheduling Based on Resource Usage
+
+Kubernetes allows scheduling based on resource requests and limits to ensure balanced utilization across nodes.
+This can be achieved by specifying resource requests and limits in the pod specification.
+
+![Resource Usage](/static/images/blogs/posts/kubernetes-scheduling/resource-scheduling.png)
+
+**Example:**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-requests-example
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        requests:
+          memory: '64Mi'
+          cpu: '250m'
+        limits:
+          memory: '128Mi'
+          cpu: '500m'
+```
+
+**Explanation:**
+
+This pod requests a minimum of _64Mi memory_ and _250m CPU_ and can use up to _128Mi memory_ and _500m CPU_.
+
+---
+
+## Comparison of Advanced Scheduling Techniques in Kubernetes
+
+| Concept                      | Description                                                                                             | Use Cases                                                                                                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Node Affinity                | Constrains which nodes a pod can be scheduled on based on node labels.                                  | When you need to ensure pods run on nodes with specific attributes, such as hardware characteristics or geographic locations.                               |
+| Pod Anti-Affinity            | Ensures that certain pods do not run on the same node to promote high availability and fault tolerance. | When you want to spread pods across nodes to reduce the risk of a single node failure affecting multiple replicas of a critical application.                |
+| Taints and Tolerations       | Allows nodes to repel pods unless they have matching tolerations.                                       | When you need to dedicate nodes for specific workloads or prevent certain workloads from running on specific nodes due to resource constraints or policies. |
+| Custom Schedulers            | Implements specific scheduling algorithms tailored to unique requirements.                              | When the default Kubernetes scheduler does not meet specific scheduling needs, such as custom resource prioritization or advanced placement strategies.     |
+| Resource Requests and Limits | Specifies the minimum and maximum resources a pod can use to ensure balanced utilization.               | When you need to manage resource allocation and ensure that workloads have the necessary resources while preventing any single pod from monopolizing them.  |
+
+---
+
+## Conclusion
+
+Mastering advanced scheduling techniques in Kubernetes is essential for optimizing resource utilization, ensuring high availability, and meeting specific deployment requirements.
+
+By leveraging node affinity, anti-affinity, taints, tolerations, custom schedulers, and resource requests, you can fine-tune your deployments to achieve optimal performance and reliability.
+Start experimenting with these advanced scheduling techniques to unlock the full potential of Kubernetes and take your deployments to the next level!
+
+Stay tuned for the upcoming posts in our 🚀 In-Depth Kubernetes series!
