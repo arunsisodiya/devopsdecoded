@@ -115,30 +115,34 @@ Taints are applied to nodes, and tolerations are applied to pods.
 **Example:**
 
 1. Add a Taint to a Node:
+
    ```bash
    # Taint the node
    kubectl taint nodes node1 key=value:NoSchedule
    ```
+
 2. Add a Toleration to a Pod:
-   `yaml
-    # Pod specification with toleration
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: toleration-example
-    spec:
-      tolerations:
-      - key: "key"
-        operator: "Equal"
-        value: "value"
-        effect: "NoSchedule"
-      containers:
-      - name: nginx
-        image: nginx
-    `
+
+   ```yaml
+   # Pod specification with toleration
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: toleration-example
+   spec:
+     tolerations:
+       - key: 'key'
+         operator: 'Equal'
+         value: 'value'
+         effect: 'NoSchedule'
+     containers:
+       - name: nginx
+         image: nginx
+   ```
+
    **Explanation:**
 
-The pod will only be scheduled on nodes with the taint `key=value:NoSchedule`.
+   The pod will only be scheduled on nodes with the taint `key=value:NoSchedule`.
 
 ---
 
@@ -156,20 +160,22 @@ Custom schedulers can be used to implement specific scheduling algorithms tailor
    **_Create a custom scheduler container image implementing your scheduling logic._**
 
 2. Specify the Custom Scheduler in a Pod:
-   `yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: custom-scheduler-example
-    spec:
-      schedulerName: my-custom-scheduler # Your custom scheduler
-      containers:
-      - name: nginx
-        image: nginx
-    `
+
+   ```yaml
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: custom-scheduler-example
+   spec:
+     schedulerName: my-custom-scheduler # Your custom scheduler
+     containers:
+       - name: nginx
+         image: nginx
+   ```
+
    **Explanation:**
 
-This pod will be scheduled by the custom scheduler named `my-custom-scheduler`.
+   This pod will be scheduled by the custom scheduler named `my-custom-scheduler`.
 
 ---
 
