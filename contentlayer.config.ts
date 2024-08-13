@@ -12,6 +12,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeCitation from 'rehype-citation';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypePresetMinify from 'rehype-preset-minify';
+import shiki from '@shikijs/rehype'; // Import Shiki Rehype plugin
 
 const root = process.cwd();
 
@@ -81,7 +82,15 @@ export default makeSource({
       rehypeAutolinkHeadings,
       rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data') }],
-      [rehypePrismPlus, { ignoreMissing: true }],
+      [
+        shiki,
+        {
+          themes: {
+            light: 'tokyo-night',
+            dark: 'material-theme-darker',
+          },
+        },
+      ],
       rehypePresetMinify,
     ],
   },
