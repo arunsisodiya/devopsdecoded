@@ -1,6 +1,7 @@
 import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 import path from 'path';
+import type { Pluggable } from 'unified'; // Import Pluggable type
 // Remark packages
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -10,11 +11,17 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeKatex from 'rehype-katex';
 import rehypeCitation from 'rehype-citation';
-import rehypePrismPlus from 'rehype-prism-plus';
 import rehypePresetMinify from 'rehype-preset-minify';
 import shiki from '@shikijs/rehype'; // Import Shiki Rehype plugin
 
 const root = process.cwd();
+
+interface ShikiOptions {
+  themes: {
+    light: string;
+    dark: string;
+  };
+}
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -87,10 +94,10 @@ export default makeSource({
         {
           themes: {
             light: 'tokyo-night',
-            dark: 'material-theme-darker',
+            dark: 'tokyo-night',
           },
         },
-      ],
+      ] as unknown as Pluggable<[ShikiOptions]>,
       rehypePresetMinify,
     ],
   },
