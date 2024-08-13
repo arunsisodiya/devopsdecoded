@@ -12,6 +12,7 @@ import siteMetadata from '@/data/siteMetadata';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import BlogMeta from '@/components/blog/BlogMeta';
 import AdBanner from '@/components/AdsBanner';
+import FloatingLikeButton from '@/components/FloatingLikeButton';
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/master/data/${path}`;
 const discussUrl = (path) =>
@@ -40,6 +41,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
   return (
     <SectionContainer>
       <BlogSEO url={`${siteMetadata.siteUrl}/${path}`} authorDetails={authorDetails} {...content} />
+      <FloatingLikeButton url={slug} />
       <ScrollTopAndComment />
       <article>
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
